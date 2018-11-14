@@ -1,0 +1,64 @@
+---
+title: "Aruna"
+author: "Aruna"
+date: "14 November 2018"
+output: word_document
+---
+```{r}
+#Assigment 6.2
+
+# a . Is there any differnce in fares by class of tickets
+#     Note : Show a blox plot displaying the distribution of fares
+library(readxl)
+titanic3 <- read_excel("F:/R Notes/Assignments/titanic3.xls")
+#View(titanic3)
+boxplot(fare~pclass, data = titanic3, 
+        main = "Fares paid by Different Classes",
+        xlab = "Classes",
+        ylab = "Fare",
+        col = heat.colors(5)
+        )
+# yes the passengers of Class 1 had to pay higher fares as compared to
+# other 2 categories.
+```
+
+```{r}
+# b. Is there any association with Passenger class and  gender
+#    show a stacked bar chart
+library(ggplot2)
+library(readxl)
+titanic3 <- read_excel("F:/R Notes/Assignments/titanic3.xls")
+#View(titanic3)
+
+ggplot(titanic3, aes(pclass,fill = sex))+
+  geom_bar(colour = "black")+
+  xlab("Passenger class(1/2/3)") + 
+  ylab("Total Passengers") +
+  coord_flip()+
+  ggtitle("Barplot to represent Sex ratio for each of the class")
+```
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
